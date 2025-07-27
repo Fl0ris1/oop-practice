@@ -1,3 +1,4 @@
+from clear_screen import clear
 class Student:
     def __init__(self):
         self.name=""
@@ -28,6 +29,7 @@ class AllDetails(Student):
         self.average=self.total//3
 
     def showDetails(self):
+        clear()
         print(f"Your Total is: {self.total}\nYour Average is: {self.average}")
         if self.average==10:
             print("Excellent")
@@ -49,4 +51,6 @@ class AllDetails(Student):
         
 student1=AllDetails()
 student1.askInfo()
-student1.showInfo()
+student1.askDetails()
+student1.calc()
+student1.showDetails()
