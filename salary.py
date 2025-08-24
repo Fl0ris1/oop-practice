@@ -17,7 +17,7 @@ class Spendings(Salary):
         self.investments=0
         self.otherExpenses=0
         self.totalSpendings=0
-        self.monthlyEarnings=0
+        self.monthlySavings=0
     
     def askInfo(self):
         self.taxpercentage=float(input("Input Your Income Tax Percentage: "))
@@ -34,23 +34,15 @@ class Spendings(Salary):
         self.totalSpendings=self.transportation+self.livingExpenses+self.investments+self.otherExpenses
         return self.totalSpendings
         
-    def calculateEarnings(self):
-        self.monthlyEarnings=self.netSalary-self.totalSpendings
-        return self.monthlyEarnings
+    def calculateSavings(self):
+        self.monthlySavings=self.netSalary-self.totalSpendings
+        return self.monthlySavings
                 
 
 user=Spendings()
 
 user.askGross()
 user.askInfo()
-user.calculateNet()
-user.calculateSpendings()
-user.calculateEarnings()
 
 os.system("cls")
-print(f"Your Monthly Net Income is: {user.netSalary}$\nYou're Spending {user.totalSpendings}$ Per Month")
-if user.monthlyEarnings<0:
-    print(f"You're Losing {user.monthlyEarnings*(-1)}$ Per Month")
-
-elif user.monthlyEarnings>=0:
-    print(f"Your Earning {user.monthlyEarnings}$ Per Month")
+print(f"Your Monthly Net Income is: {user.calculateNet()}$\nYou're Spending {user.calculateSpendings()}$ Per Month\nYour Total Savings is {user.calculateSavings()}$")
